@@ -15,7 +15,7 @@ const tween = microtween({
 })
 ```
 
-The `update` function is called within requestAnimationFrame, so you're free to update styles and DOM elements without causing major performance issues.
+The `update` function is called within `requestAnimationFrame`, so you're free to update styles and DOM elements without causing major performance issues.
 
 You can use the default easing, specify a built in easing, or define your own on the fly:
 
@@ -43,13 +43,13 @@ microtween({
 
 These are the included curves:
 
-- default (0.25, 0.12, 0.31, 1)
-- linear (0, 0, 1, 1)
-- easeOut (0, 0, 0.58, 1)
-- circular (0, 0.6, 0.4, 1)
-- elastic (0.53, 1, 0.15, 1.2)
-- elasticStrong (0.75, -0.5, 0, 1.75)
-- expo (0.19, 0.85, 0.64, 1.01)
+- default (`0.25`, `0.12`, `0.31`, `1`)
+- linear (`0`, `0`, `1`, `1`)
+- easeOut (`0`, `0`, `0.58`, `1`)
+- circular (`0`, `0.6`, `0.4`, `1`)
+- elastic (`0.53`, `1`, `0.15`, `1.2`)
+- elasticStrong (`0.75`, `-0.5`, `0`, `1.75`)
+- expo (`0.19`, `0.85`, `0.64`, `1.01`)
 
 [cubic-bezier.com](http://cubic-bezier.com) is an awesome tool to check out if you're interested in creating your own.
 
