@@ -3,7 +3,7 @@
  * ----------
  * A super simple tween function. Give it your starting
  * and ending properties, time in milliseconds, and
- * a callbackto fire on each frame.
+ * a callback to fire on each frame.
  */
 
 ;(function (root, factory) {
@@ -25,7 +25,6 @@
    * --- included for customizable curves
    */
 
-  // These values are established by empiricism with tests (tradeoff: performance VS precision)
   const NEWTON_ITERATIONS = 4
   const NEWTON_MIN_SLOPE = 0.001
   const SUBDIVISION_PRECISION = 0.0000001
@@ -39,11 +38,9 @@
   function A (aA1, aA2) { return 1.0 - 3.0 * aA2 + 3.0 * aA1 }
   function B (aA1, aA2) { return 3.0 * aA2 - 6.0 * aA1 }
   function C (aA1) { return 3.0 * aA1 }
-
   function calcBezier (aT, aA1, aA2) { return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT }
-
   function getSlope (aT, aA1, aA2) { return 3.0 * A(aA1, aA2) * aT * aT + 2.0 * B(aA1, aA2) * aT + C(aA1) }
-
+  
   function binarySubdivide (aX, aA, aB, mX1, mX2) {
     let currentX
     let currentT
@@ -111,9 +108,8 @@
 
     return function BezierEasing (x) {
       if (mX1 === mY1 && mX2 === mY2) {
-        return x // linear
+        return x
       }
-      // Because JavaScript number are imprecise, we should guarantee the extremes are right.
       if (x === 0) {
         return 0
       }

@@ -1,6 +1,6 @@
 {
   "name": "@schwingbat/microtween",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A super simple tweening library",
   "main": "microtween.js",
   "scripts": {
