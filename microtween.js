@@ -1,25 +1,19 @@
 /**
  * Microtween
  * ----------
- * A super simple tween function.
- * Give it your starting and ending properties,
- * time in milliseconds, and a callback to fire on
- * each frame.
+ * A super simple tween function. Give it your starting
+ * and ending properties, time in milliseconds, and
+ * a callbackto fire on each frame.
  */
 
 ;(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-      // AMD. Register as an anonymous module.
-      define([], factory);
+    define([], factory);
   } else if (typeof module === 'object' && module.exports) {
-      // Node. Does not work with strict CommonJS, but
-      // only CommonJS-like environments that support module.exports,
-      // like Node.
-      module.exports = factory();
+    module.exports = factory();
   } else {
-      // Browser globals (root is window)
-      root.returnExports = factory();
-}
+    root.microtween = factory();
+  }
 }(typeof self !== 'undefined' ? self : this, function () {
 
   /**
@@ -46,10 +40,8 @@
   function B (aA1, aA2) { return 3.0 * aA2 - 6.0 * aA1 }
   function C (aA1) { return 3.0 * aA1 }
 
-  // Returns x(t) given t, x1, and x2, or y(t) given t, y1, and y2.
   function calcBezier (aT, aA1, aA2) { return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT }
 
-  // Returns dx/dt given t, x1, and x2, or dy/dt given t, y1, and y2.
   function getSlope (aT, aA1, aA2) { return 3.0 * A(aA1, aA2) * aT * aT + 2.0 * B(aA1, aA2) * aT + C(aA1) }
 
   function binarySubdivide (aX, aA, aB, mX1, mX2) {
@@ -144,7 +136,7 @@
     expo: CubicBezier([0.19, 0.85, 0.64, 1.01])
   }
 
-  return function tween ({ from, to, time, update, easing }) {
+  function microtween ({ from, to, time, update, easing }) {
     if (from == null || to == null || time == null) {
       throw new Error('One or more required properties weren\'t passed. Please pass at at least: \'from\' (object), \'to\' (object), \'time\' (number - milliseconds)')
     }
@@ -202,10 +194,10 @@
       stop = true
       return _resolve(to)
     }
-
-    promise.ease = easings
-
     return promise
   }
 
+  microtween.ease = easings
+
+  return microtween
 }));

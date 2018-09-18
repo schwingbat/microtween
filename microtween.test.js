@@ -42,12 +42,23 @@ test('easing works', () => {
   })
 })
 
-test('blah', () => {
+test('tween is cancelable', () => {
+  let start = Date.now()
   const tween = microtween({
     from: { test: 1 },
     to: { test: 2 },
-    time: 1000
+    time: 1000,
+    update: () => {}
+  })
+
+  tween.then(() => {
+    expect(Date.now() - start).toBeLessThan(1000)
   })
 
   expect(typeof tween.cancel).toBe('function')
+  tween.cancel()
+})
+
+test('easings are accessible on microtween object', () => {
+  expect(typeof microtween.ease).toBe('object')
 })
