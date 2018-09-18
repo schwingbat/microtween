@@ -1,0 +1,21 @@
+{
+  "name": "@schwingbat/microtween",
+  "version": "1.0.0",
+  "description": "A super simple tweening library",
+  "main": "microtween.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "animation",
+    "animate",
+    "tween",
+    "transition"
+  ],
+  "author": "Tony McCoy <tony@ratwizard.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "mock-raf": "^1.0.0"
+  }
+}
