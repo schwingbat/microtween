@@ -4,7 +4,8 @@
   "description": "A super simple tweening library",
   "main": "microtween.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "uglifyjs -c -m --mangle-props -o dist/microtween.min.js -- microtween.js"
   },
   "keywords": [
     "animation",
@@ -16,6 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^23.6.0",
-    "mock-raf": "^1.0.0"
+    "mock-raf": "^1.0.0",
+    "uglify-es": "^3.3.9"
   }
 }
